@@ -1,0 +1,2 @@
+
+        if(vis[child]) continue;
