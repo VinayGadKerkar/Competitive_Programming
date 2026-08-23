@@ -2,23 +2,23 @@
 using namespace std;
 
 int main() {
-    string word;
-    cin >> word;
-    int upperCnt = 0;
-    int lowerCnt = 0;
-    for(char ch : word){
-        if(isupper(ch))
-            upperCnt++;
-        else
-            lowerCnt++;
+    int n;
+    cin >> n;
+    int maxSeg = 1;
+    int curSeg = 1;
+    int curMax = INT_MAX;
+    for(int i = 0 ; i < n ; i++){
+        int x;
+        cin >> x;
+        if(x >= curMax){
+            curSeg++;
+            maxSeg = max(maxSeg , curSeg);
+        }else{
+            curSeg = 1;
+        }
+        curMax = x;
     }
-    if(upperCnt > lowerCnt)
-        transform(word.begin() , word.end() , word.begin() , ::toupper);
-    else if(lowerCnt > upperCnt)
-        transform(word.begin() , word.end() , word.begin() , ::tolower);
-    else
-        transform(word.begin() , word.end() , word.begin() , ::tolower);
-    
 
-    cout << word << "\n";
+    cout << maxSeg << "\n";
+    return 0;
 }
